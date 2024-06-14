@@ -51,13 +51,13 @@
 <p>- Now that we have a session on the victim VM, we can use “post/multi/recon/local_exploit_suggester” (PICTURE HERE)</p>
 <img src=""/>
 <p>- Set the session to whatever the session number is listed, and then enter "run"</p>
-<p>Once complete, there are multiple exploits that Metasploit found that the victim VM may be vulnerable to. We can use one of these to accomplish tasks that could be beneficial to the penetration test. (PICTURE)</p>
+<p>- Once complete, there are multiple exploits that Metasploit found that the victim VM may be vulnerable to. We can use one of these to accomplish tasks that could be beneficial to the penetration test. (PICTURE)</p>
 <img src=""/>
-<p>If we go back to our session, we can run a variety of commands to get a lot of information from the VM. “Hashdump” can collect all of the password hashes so that we can brute force them offline for example. (PICTURE)</p>
+<p>- If we go back to our session, we can run a variety of commands to get a lot of information from the VM. “Hashdump” can collect all of the password hashes so that we can brute force them offline for example. (PICTURE)</p>
 <img src=""/>
-<p>Try “getsystem” in the meterpreter shell. If successful, this will escalate our account’s privileges to the highest access, Authority. This will allow us to execute almost anything we want on the Windows VM. You can check the status of the account with “getuid”. (PICTURE)</p>
+<p>- Try “getsystem” in the meterpreter shell. If successful, this will escalate our account’s privileges to the highest access, Authority. This will allow us to execute almost anything we want on the Windows VM. You can check the status of the account with “getuid”. (PICTURE)</p>
 <img src=""/>
-<p>Feel free to play around with the commands in meterpreter to see what it can accomplish. </p>
-<p>Once you have accomplished your tasks in the penetration test, you can even remove the logs of what you have done in Event Viewer to avoid detection. In the meterpreter shell, enter "clearev". You should see in Event Viewer that the logs are not appearing for what actions you have performed within the VM. (PICTURE) </p>
+<p>- Feel free to play around with the commands in meterpreter to see what it can accomplish. </p>
+<p>- Once you have accomplished your tasks in the penetration test, you can even remove the logs of what you have done in Event Viewer to avoid detection. In the meterpreter shell, enter "clearev". You should see in Event Viewer that the logs are not appearing for what actions you have performed within the VM. (PICTURE) </p>
 <img src=""/>
-<p>There is a lot more to Metasploit, but this is just a very basic overview of what this powerful tool can accomplish in the penetration testing environment!</p>
+<p>- There is a lot more to Metasploit, but this is just a very basic overview of what this powerful tool can accomplish in the penetration testing environment!</p>
