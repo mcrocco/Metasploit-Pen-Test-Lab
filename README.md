@@ -24,7 +24,7 @@
 <p>Select Start to run the Kali Linux virtual machine. You can select all of the defaults for the setup prompts. </p>
 
 <h2>2. Configuring Metasploit</h2>
-<p>- In the Kali Linux VM, select the logo on the top left, then scroll down to where it says “exploitation frameworks”. Select Metasploit to launch the terminal. (PICTURE HERE)</p>
+<p>- In the Kali Linux VM, select the logo on the top left, then scroll down to where it says “Exploitation Tools”. Select Metasploit to launch the terminal. (PICTURE HERE)</p>
 <img src=""/>
 <p>- It will ask for the password from the account you made for the VM, once entered Metasploit will start running its configuration.</p>
 <p>- From here, you can explore many different exploits, payloads, stagers, & commands by using the “help” or “search” commands</p>
