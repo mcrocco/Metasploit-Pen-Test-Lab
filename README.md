@@ -1,5 +1,5 @@
 <h1>Metasploit Penetration Test Lab</h1>
-<img src=""/>
+<img src="https://i.imgur.com/t8kIcdz.jpeg"/>
 <p>In this lab, we utilize the Metasploit framework to exploit a vulnerable virtual machine to simulate a penetration test.</p>
 <h2>Resources Used: </h2>
 <p>- Kali Linux</p>
